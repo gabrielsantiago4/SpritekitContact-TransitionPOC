@@ -48,6 +48,12 @@ class SecondScene: SKScene {
         buildScene()
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let nextScene = TitleScene(size: self.size)
+        let transition = SKTransition.fade(withDuration: 2)
+        self.view?.presentScene(nextScene, transition: transition)
+    }
+
 }
 extension SecondScene: SetScene {
     func addChildNodes() {

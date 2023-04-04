@@ -7,12 +7,16 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class FirstScene: SKScene {
 
     weak var gameDelegate: firstSceneDelegate?
 
+    var audioplayer: AVAudioPlayer?
+
     var isTimeCounting : Bool = true
+    var isBGMPlaying: Bool = true
 
     var timerValue = 0 {
         didSet{
@@ -84,6 +88,9 @@ class FirstScene: SKScene {
     override func didMove(to view: SKView) {
         buildScene()
         self.physicsWorld.contactDelegate = self
+        if isBGMPlaying == true {
+            playSound(name: "bgm", extension: "mp3")
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -118,9 +125,15 @@ extension FirstScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyB == obstacleOne.physicsBody {
 
-            //parando o contador
+            //parando o contador e a música
             self.isTimeCounting = false
+            self.audioplayer?.stop()
 
+            //salvando o recorde
+            if timerValue > UserDefaults.standard.integer(forKey: "record") {
+                UserDefaults.standard.set(self.timerValue, forKey: "record")
+            }
+            
             //alterando o finalscore da proxima scene
             let nextScene = SecondScene(size: self.size)
 
@@ -128,6 +141,17 @@ extension FirstScene: SKPhysicsContactDelegate {
             nextScene.finalScore.text = "\(self.timerValue)"
             let transition = SKTransition.fade(withDuration: 2)
             self.view?.presentScene(nextScene, transition: transition)
+        }
+    }
+}
+extension FirstScene {
+    func playSound(name: String, extension: String){
+        let url = Bundle.main.url(forResource: name, withExtension: `extension`)
+        do{
+            audioplayer = try AVAudioPlayer(contentsOf: url!)
+            audioplayer?.play()
+        } catch {
+            print(error)
         }
     }
 }

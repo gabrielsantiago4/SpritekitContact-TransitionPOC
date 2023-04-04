@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36186A6C29DC6E8B003E53B5 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36186A6B29DC6E8B003E53B5 /* bgm.mp3 */; };
+		36186A6E29DC76C6003E53B5 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36186A6D29DC76C6003E53B5 /* TitleScene.swift */; };
 		365CE3BA29D33202008F970F /* SetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CE3B929D33202008F970F /* SetScene.swift */; };
 		36B18CD429D7064400EE712F /* SecondScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B18CD329D7064400EE712F /* SecondScene.swift */; };
 		36B18CD629D70BB000EE712F /* FirstSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B18CD529D70BB000EE712F /* FirstSceneDelegate.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36186A6B29DC6E8B003E53B5 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm.mp3; sourceTree = "<group>"; };
+		36186A6D29DC76C6003E53B5 /* TitleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		365CE3B929D33202008F970F /* SetScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetScene.swift; sourceTree = "<group>"; };
 		36B18CD329D7064400EE712F /* SecondScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScene.swift; sourceTree = "<group>"; };
 		36B18CD529D70BB000EE712F /* FirstSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				36DE844929CD3A75004A4817 /* AppDelegate.swift */,
+				36186A6D29DC76C6003E53B5 /* TitleScene.swift */,
 				36DE844F29CD3A75004A4817 /* FirstScene.swift */,
 				36B18CD329D7064400EE712F /* SecondScene.swift */,
 				36DE845129CD3A75004A4817 /* GameViewController.swift */,
@@ -70,6 +75,7 @@
 				36DE845829CD3A76004A4817 /* LaunchScreen.storyboard */,
 				365CE3B929D33202008F970F /* SetScene.swift */,
 				36B18CD529D70BB000EE712F /* FirstSceneDelegate.swift */,
+				36186A6B29DC6E8B003E53B5 /* bgm.mp3 */,
 			);
 			path = "game-poc";
 			sourceTree = "<group>";
@@ -133,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36DE845529CD3A75004A4817 /* Main.storyboard in Resources */,
+				36186A6C29DC6E8B003E53B5 /* bgm.mp3 in Resources */,
 				36DE845729CD3A76004A4817 /* Assets.xcassets in Resources */,
 				36DE845A29CD3A76004A4817 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -147,6 +154,7 @@
 			files = (
 				36B18CD629D70BB000EE712F /* FirstSceneDelegate.swift in Sources */,
 				36DE845029CD3A75004A4817 /* FirstScene.swift in Sources */,
+				36186A6E29DC76C6003E53B5 /* TitleScene.swift in Sources */,
 				36B18CD429D7064400EE712F /* SecondScene.swift in Sources */,
 				36DE845229CD3A75004A4817 /* GameViewController.swift in Sources */,
 				36DE844A29CD3A75004A4817 /* AppDelegate.swift in Sources */,

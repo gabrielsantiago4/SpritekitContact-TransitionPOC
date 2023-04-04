@@ -13,7 +13,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scene = FirstScene(size: view.bounds.size)
+        let scene = TitleScene(size: view.bounds.size)
 //        scene.gameDelegate = self
         let skView = self.view as! SKView
         skView.contentMode = .scaleAspectFill
