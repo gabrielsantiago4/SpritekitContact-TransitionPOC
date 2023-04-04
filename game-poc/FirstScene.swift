@@ -12,6 +12,23 @@ class FirstScene: SKScene {
 
     weak var gameDelegate: firstSceneDelegate?
 
+    var isTimeCounting : Bool = true
+
+    var timerValue = 0 {
+        didSet{
+            timer.text = "Time: \(timerValue)"
+        }
+    }
+
+    var timer: SKLabelNode = {
+        let timer = SKLabelNode()
+        timer.fontSize = 30
+        timer.zPosition = 3
+        timer.fontColor = .black
+        timer.scene?.anchorPoint = CGPoint(x: 1, y: 1)
+        return timer
+    }()
+
     var background: SKSpriteNode = {
         let background = SKSpriteNode(imageNamed: "skytwo")
         background.anchorPoint = CGPoint(x: 0, y: 0)
@@ -58,6 +75,12 @@ class FirstScene: SKScene {
         return obstacleOne
     }()
 
+    override public func update(_ currentTime: TimeInterval) {
+        if isTimeCounting == true {
+            timerValue += 1
+        }
+    }
+
     override func didMove(to view: SKView) {
         buildScene()
         self.physicsWorld.contactDelegate = self
@@ -74,6 +97,7 @@ extension FirstScene: SetScene {
         addChild(background)
         addChild(ground)
         addChild(obstacleOne)
+        addChild(timer)
     }
 
     func configureChildNodes() {
@@ -82,8 +106,10 @@ extension FirstScene: SetScene {
             x: self.view!.frame.midX * 0.1,
             y: self.view!.frame.midY + 100)
         obstacleOne.position = CGPoint(
-            x: self.view!.frame.midX * 0.6,
+            x: self.view!.frame.midX * 1.2,
             y: self.view!.frame.midY * 0.48)
+        timer.position = CGPoint(x: self.view!.frame.midX * 1.7, y: self.view!.frame.midY * 1.8)
+        timer.text = "Time: \(timerValue)"
     }
 
 
@@ -91,13 +117,17 @@ extension FirstScene: SetScene {
 extension FirstScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyB == obstacleOne.physicsBody {
-            print("entrou em contato")
-            gameDelegate?.transitionScene()
+
+            //parando o contador
+            self.isTimeCounting = false
+
+            //alterando o finalscore da proxima scene
             let nextScene = SecondScene(size: self.size)
+
+            // empurrando a próxima scene
+            nextScene.finalScore.text = "\(self.timerValue)"
             let transition = SKTransition.fade(withDuration: 2)
             self.view?.presentScene(nextScene, transition: transition)
-//            obstacleOne.run(
-//                SKAction.applyForce(CGVector(dx: 320, dy: 400), duration: 0.21))
         }
     }
 }

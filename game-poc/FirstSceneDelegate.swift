@@ -8,5 +8,5 @@
 import Foundation
 
 protocol firstSceneDelegate: AnyObject {
-    func transitionScene()
+    func sendTimeCount(time: Int)
 }
